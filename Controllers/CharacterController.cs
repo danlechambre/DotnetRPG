@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -8,12 +9,15 @@ namespace Controllers
     
     public class CharacterController : ControllerBase
     {
-        private static Character knight = new Character();
+        private static List<Character> characters = new List<Character> {
+            new Character(),
+            new Character() {Name = "Sam"}
+        };
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult Get()
         {
-            return Ok(knight);
+            return Ok(characters);
         }
     }
 }
